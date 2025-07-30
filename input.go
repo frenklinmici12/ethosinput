@@ -4,10 +4,12 @@ import (
     "ethos/altEthos"
     "ethos/fmt"
     "ethos/syscall"
+
+	"ethos/kernelTypes"
 )
 
 func main() {
-    var inputString string
+    var inputString kernelTypes.String
 
     // Read user input from standard input (terminal)
     status := altEthos.ReadStream(altEthos.StdinFd, &inputString)
