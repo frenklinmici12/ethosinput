@@ -8,12 +8,16 @@ import (
 
 func main() {
     var input kernelTypes.String
+
+    // Read user input from the console
     status := altEthos.Read("/programs/input", &input)
     if status != syscall.StatusOk {
-        altEthos.Write("/programs/output", &kernelTypes.String{"Failed to read input"})
+        var errMsg kernelTypes.String
+        errMsg.Value = "Failed to read input"
+        altEthos.Write("/programs/output", &errMsg)
         return
     }
 
-    // Echo the input back to output
+    // Echo input back to the output
     altEthos.Write("/programs/output", &input)
 }
