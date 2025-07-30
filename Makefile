@@ -38,3 +38,21 @@ clean:
 	sudo rm -rf client ethos
 	rm -f input
 	rm -f input.goo.ethos
+
+reset:
+	cd client
+	sudo ethosKillAll
+	cd ..
+	sudo rm -rf client ethos
+	rm -f input
+	rm -f input.goo.ethos
+
+	git pull
+
+	clear
+
+	make && make install
+
+sync:
+	git commit -am "test"
+	git push
