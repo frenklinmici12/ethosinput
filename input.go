@@ -4,6 +4,8 @@ import (
     "ethos/altEthos"
     "ethos/fmt"
     "ethos/syscall"
+
+	"ethos/kernelTypes"
 )
 
 func main() {
@@ -14,7 +16,7 @@ func main() {
         return
     }
 
-    var input string
+    var input kernelTypes.String
 
     // Read from the input stream
     status = altEthos.ReadStream(fd, &input)
