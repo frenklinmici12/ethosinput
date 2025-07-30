@@ -1,21 +1,21 @@
 package main
 
 import (
-	"bufio"
-	"ethos/fmt"
-	"os"
+    "ethos/altEthos"
+    "ethos/fmt"
+    "ethos/syscall"
 )
 
 func main() {
-	fmt.Print("Enter some text: ")
-	reader := bufio.NewReader(os.Stdin)
+    var inputString string
 
-	// Read until a newline character
-	input, err := reader.ReadString('\n')
-	if err != nil {
-		fmt.Println("Error reading input:", err)
-		return
-	}
+    // Read user input from standard input (terminal)
+    status := altEthos.ReadStream(altEthos.StdinFd, &inputString)
+    if status != syscall.StatusOk {
+        fmt.Printf("Failed to read input: %v\n", status)
+        return
+    }
 
-	fmt.Println("You entered:", input)
+    // Echo it back to the user
+    fmt.Printf("You entered: %v\n", inputString)
 }
