@@ -1,30 +1,19 @@
 package main
 
 import (
-    "ethos/altEthos"
-    "ethos/fmt"
     "ethos/syscall"
-
-	"ethos/kernelTypes"
+    "ethos/kernelTypes"
+    "ethos/altEthos"
 )
 
 func main() {
-    // Open the input stream (user input from console)
-    fd, status := altEthos.OpenReadStream("/programs/input")
-    if status != syscall.StatusOk {
-        fmt.Printf("Failed to open input: %v\n", status)
-        return
-    }
-
     var input kernelTypes.String
-
-    // Read from the input stream
-    status = altEthos.ReadStream(fd, &input)
+    status := altEthos.Read("/programs/input", &input)
     if status != syscall.StatusOk {
-        fmt.Printf("Failed to read: %v\n", status)
+        altEthos.Write("/programs/output", &kernelTypes.String{"Failed to read input"})
         return
     }
 
-    // Echo the input back to the user
-    fmt.Printf("You said: %v\n", input)
+    // Echo the input back to output
+    altEthos.Write("/programs/output", &input)
 }
