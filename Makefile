@@ -38,11 +38,12 @@ clean:
 	sudo rm -rf client ethos
 	rm -f input
 	rm -f input.goo.ethos
+	
+#cd client
+#sudo ethosKillAll
+#cd ..
 
 reset:
-	cd client
-	sudo ethosKillAll
-	cd ..
 	sudo rm -rf client ethos
 	rm -f input
 	rm -f input.goo.ethos
