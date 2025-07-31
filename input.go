@@ -4,6 +4,7 @@ import (
     "ethos/syscall"
     "ethos/kernelTypes"
     "ethos/altEthos"
+	"log"
 )
 
 func main() {
@@ -19,4 +20,6 @@ func main() {
 
     // Write back to stdout
     altEthos.WriteStream(syscall.StdOut, &input)
+
+	log.Println("log: all done!!!!")
 }
