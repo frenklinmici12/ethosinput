@@ -5,7 +5,8 @@ import (
 	"ethos/fmt"
 	"ethos/kernelTypes"
 	"ethos/syscall"
-	
+	"fmt"
+
 	"log"
 )
 
@@ -14,15 +15,17 @@ func main() {
     var input kernelTypes.String
 
     // Read from stdin
-    status := altEthos.ReadStream(0, &input)
+   /* status := altEthos.ReadStream(0, &input)
     if status != syscall.StatusOk {
         var errMsg kernelTypes.String = "Failed to read from stdin"
         altEthos.WriteStream(1, &errMsg)
         return
-    }
+    }*/
+	fmt.Printf("enter text: ")
 
-    // Write back to stdout
-    //altEthos.WriteStream(1, &input)
+	fmt.Scanf("%s", &input)
+
+
 	fmt.Println(input)
 
 	log.Println("log: all done!!!!")
