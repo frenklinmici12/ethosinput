@@ -11,15 +11,15 @@ func main() {
     var input kernelTypes.String
 
     // Read from stdin
-    status := altEthos.ReadStream(syscall.StdIn, &input)
+    status := altEthos.ReadStream(0, &input)
     if status != syscall.StatusOk {
         var errMsg kernelTypes.String = "Failed to read from stdin"
-        altEthos.WriteStream(syscall.StdOut, &errMsg)
+        altEthos.WriteStream(1, &errMsg)
         return
     }
 
     // Write back to stdout
-    altEthos.WriteStream(syscall.StdOut, &input)
+    altEthos.WriteStream(1, &input)
 
 	log.Println("log: all done!!!!")
 }
