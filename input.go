@@ -1,13 +1,16 @@
 package main
 
 import (
-    "ethos/syscall"
-    "ethos/kernelTypes"
-    "ethos/altEthos"
+	"ethos/altEthos"
+	"ethos/fmt"
+	"ethos/kernelTypes"
+	"ethos/syscall"
+	
 	"log"
 )
 
 func main() {
+	
     var input kernelTypes.String
 
     // Read from stdin
@@ -19,7 +22,9 @@ func main() {
     }
 
     // Write back to stdout
-    altEthos.WriteStream(1, &input)
+    //altEthos.WriteStream(1, &input)
+	fmt.Println(input)
 
 	log.Println("log: all done!!!!")
+	
 }
