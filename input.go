@@ -1,11 +1,11 @@
 package main
 
 import (
-	"ethos/altEthos"
+	//"ethos/altEthos"
 	"ethos/fmt"
 	"ethos/kernelTypes"
-	"ethos/syscall"
-	"fmt"
+	//"ethos/syscall"
+	
 
 	"log"
 )
