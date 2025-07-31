@@ -9,13 +9,14 @@ import (
 func main() {
     var input kernelTypes.String
 
-    status := altEthos.Read("/programs/input", &input)
+    // Read from stdin
+    status := altEthos.ReadStream(syscall.StdIn, &input)
     if status != syscall.StatusOk {
-        var errMsg kernelTypes.String
-        errMsg = "Failed to read input"
-        altEthos.Write("/programs/output", &errMsg)
+        var errMsg kernelTypes.String = "Failed to read from stdin"
+        altEthos.WriteStream(syscall.StdOut, &errMsg)
         return
     }
 
-    altEthos.Write("/programs/output", &input)
+    // Write back to stdout
+    altEthos.WriteStream(syscall.StdOut, &input)
 }
